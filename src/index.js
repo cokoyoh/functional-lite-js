@@ -10,11 +10,11 @@ const isLongEnough = not(isShortEnough);
 
 const curry = (fn, arity = fn.length) => {
   return (function nextCurried(previousArgs) {
-    return function curried(...nextArgs) {
-      const args = [...previousArgs, nextArgs];
+    return function curried(nextArg) {
+      const args = [...previousArgs, nextArg];
 
       if (args.length >= arity) {
-        return fn(args)
+        return fn(...args)
       }
 
       return nextCurried(args)
@@ -22,5 +22,14 @@ const curry = (fn, arity = fn.length) => {
   })([])
 }
 
+const sum = (a, b) => a + b;
+
 console.log({ isLong: isLongEnough('this is a long string') });
 console.log({ isNotLong: isLongEnough('not') });
+
+const addFiveTo = curry(sum)
+
+const nums = [1, 2, 3, 4].map(addFiveTo(5))
+
+console.log({ nums: [1, 2, 3, 4].map(addFiveTo(5)) });
+
