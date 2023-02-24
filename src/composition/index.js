@@ -24,16 +24,20 @@ const compose2 = (fn2, fn1) => {
 };
 
 /** A compose utility */
+// const compose = (...fns) => {
+//   return function composed(result) {
+//     const list = [...fns];
+
+//     while (list.length > 0) {
+//       result = list.pop()(result)
+//     }
+
+//     return result;
+//   }
+// }
+
 const compose = (...fns) => {
-  return function composed(result) {
-    const list = [...fns];
-
-    while (list.length > 0) {
-      result = list.pop()(result)
-    }
-
-    return result;
-  }
+  return (result) => fns.reverse().reduce((result, fn) => fn(result), result);
 }
 
 // const uniqueWords = compose2(unique, words);
