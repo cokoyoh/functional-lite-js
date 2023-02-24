@@ -23,7 +23,21 @@ const compose2 = (fn2, fn1) => {
   return (originalValue) => fn2(fn1(originalValue));
 };
 
-const uniqueWords = compose2(unique, words);
+/** A compose utility */
+const compose = (...fns) => {
+  return function composed(result) {
+    const list = [...fns];
+
+    while (list.length > 0) {
+      result = list.pop()(result)
+    }
+
+    return result;
+  }
+}
+
+// const uniqueWords = compose2(unique, words);
+const uniqueWords = compose(unique, words);
 
 const text = `To compose two functions together, pass \
 output of the first function call as the input of the \
