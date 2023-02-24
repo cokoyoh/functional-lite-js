@@ -19,10 +19,16 @@ const unique = (list) => {
   return uniqueList;
 }
 
+const compose2 = (fn2, fn1) => {
+  return (originalValue) => fn2(fn1(originalValue));
+};
+
+const uniqueWords = compose2(unique, words);
+
 const text = `To compose two functions together, pass \
 output of the first function call as the input of the \
 second function call`;
 
-const wordsUsed = unique(words(text))
+const wordsUsed = uniqueWords(text);
 
 console.log({ wordsUsed });
