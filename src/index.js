@@ -22,6 +22,12 @@ const curry = (fn, arity = fn.length) => {
   })([])
 }
 
+const partial = (fn, ...presetArgs) => {
+  return (...laterArgs) => {
+    return fn(...presetArgs, ...laterArgs)
+  };
+}
+
 const sum = (a, b) => a + b;
 
 console.log({ isLong: isLongEnough('this is a long string') });
