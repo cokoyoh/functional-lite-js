@@ -23,8 +23,14 @@ const compose2 = (fn2, fn1) => {
   return (originalValue) => fn2(fn1(originalValue));
 };
 
-const compose = (...fns) => {
+const compose3 = (...fns) => {
   return (result) => [...fns].reverse().reduce((result, fn) => fn(result), result);
+}
+
+const compose = (...fns) => {
+  return fns.reverse().reduce((f1, f2) => {
+    return (...args) => f2(f1(...args))
+  })
 }
 
 // const uniqueWords = compose2(unique, words);
