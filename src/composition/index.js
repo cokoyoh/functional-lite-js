@@ -33,6 +33,12 @@ const compose = (...fns) => {
   })
 }
 
+const reverseArgs = (fn) => {
+  return (...args) => fn(...args.reverse());
+};
+
+const pipe = reverseArgs(compose);
+
 // const uniqueWords = compose2(unique, words);
 const uniqueWords = compose(unique, words);
 
