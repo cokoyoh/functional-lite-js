@@ -28,6 +28,8 @@ const partial = (fn, ...presetArgs) => {
   };
 }
 
+const identity = x => x;
+
 const sum = (a, b) => a + b;
 
 console.log({ isLong: isLongEnough('this is a long string') });

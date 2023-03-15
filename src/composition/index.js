@@ -28,7 +28,7 @@ const compose3 = (...fns) => {
 }
 
 const compose = (...fns) => {
-  return fns.reverse().reduce((f1, f2) => {
+  return [...fns].reverse().reduce((f1, f2) => {
     return (...args) => f2(f1(...args))
   })
 }
