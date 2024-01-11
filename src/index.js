@@ -30,6 +30,25 @@ const partial = (fn, ...presetArgs) => {
 
 const identity = x => x;
 
+/**
+ * Given a function which receives multiple args, transform it into a unary 
+ * -> a function which receives only a single arg
+ */
+const unary = (fn) => (arg) => fn(arg);
+
+// related to what a unary function does
+const binary = (fn) => (firstArg, secondArg) => fn(firstArg, secondArg);
+
+/**
+ * constant(V) utility is a function which simply returns a function which returns the value
+ * 
+ * Useful for example in instances where the const cannot simply be passed as is but can be retruned
+ * e.g in promise.then(() => value) -> promise.then(constant(value))
+ */
+const constant = (value) => {
+  return () => value;
+}
+
 const sum = (a, b) => a + b;
 
 console.log({ isLong: isLongEnough('this is a long string') });
