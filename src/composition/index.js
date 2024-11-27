@@ -48,4 +48,6 @@ second function call`;
 
 const wordsUsed = uniqueWords(text);
 
-console.log({ wordsUsed });
+// console.log({ wordsUsed });
+
+module.exports = { compose }
