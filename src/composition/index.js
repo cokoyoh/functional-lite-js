@@ -45,7 +45,7 @@ const trace = label => value => {
 }
 
 const composeMethod = method => (...fns) => [...fns].reduce(
-  (f, g) => (arg) => g(arg)[method](f)
+  (f, g) => (...args) => g(...args)[method](f)
 );
 
 // const uniqueWords = compose2(unique, words);
