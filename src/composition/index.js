@@ -39,6 +39,15 @@ const reverseArgs = (fn) => {
 
 const pipe = reverseArgs(compose);
 
+const trace = label => value => {
+  console.log({ [label]: value })
+  return value
+}
+
+const composeMethod = method => (...fns) => [...fns].reduce(
+  (f, g) => (arg) => g(arg)[method](f)
+);
+
 // const uniqueWords = compose2(unique, words);
 const uniqueWords = compose(unique, words);
 
@@ -50,4 +59,4 @@ const wordsUsed = uniqueWords(text);
 
 // console.log({ wordsUsed });
 
-module.exports = { compose }
+module.exports = { compose, composeMethod, trace }
