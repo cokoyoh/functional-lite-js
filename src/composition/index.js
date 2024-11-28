@@ -59,4 +59,4 @@ const wordsUsed = uniqueWords(text);
 
 // console.log({ wordsUsed });
 
-module.exports = { compose, composeMethod, trace }
+module.exports = { compose, composeMethod, trace, pipe }
