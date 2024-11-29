@@ -24,7 +24,7 @@ const composeMethod = (method) => (...fns) => [...fns].reduce(
 );
 
 const partial = (fn, ...presetArgs) => {
-  return (...laterArfs) => fn(...presetArgs, ...laterArfs)
+  return (...laterArgs) => fn(...presetArgs, ...laterArgs)
 }
 
 const spreadArgs = (fn) => (args) => fn(...args)
