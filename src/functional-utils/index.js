@@ -31,4 +31,6 @@ const spreadArgs = (fn) => (args) => fn(...args)
 
 const not = (fn) => (...args) => !fn(...args)
 
-module.exports = { guard, trace, pipe, compose, composeMethod, partial, spreadArgs, not };
+const asyncPipe = (...fns) => arg => [...fns].reduce(async (g, f) => f( await g), arg)
+
+module.exports = { guard, trace, pipe, compose, composeMethod, partial, spreadArgs, not, asyncPipe };
