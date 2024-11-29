@@ -29,4 +29,6 @@ const partial = (fn, ...presetArgs) => {
 
 const spreadArgs = (fn) => (args) => fn(...args)
 
-module.exports = { guard, trace, pipe, compose, composeMethod, partial, spreadArgs };
+const not = (fn) => (...args) => !fn(...args)
+
+module.exports = { guard, trace, pipe, compose, composeMethod, partial, spreadArgs, not };
