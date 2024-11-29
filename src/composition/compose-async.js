@@ -22,8 +22,7 @@ const canPostBlog = (isActive) => {
   return Promise.resolve({ message: 'User cannot post a blog' })
 }
 
-const log = (...message) => console.log(...message)
-
+const log = (...args) => console.log(...args)
 
 /**
  * Get user
@@ -33,6 +32,6 @@ const log = (...message) => console.log(...message)
  * Allow the user to post their id
  */
 
-const userPostBlog = asyncPipe(getUserById, trace('User'), isActive, trace('Is Active'), canPostBlog, trace('Message Received'));
+const userPostBlog = asyncPipe(getUserById, trace('User'), isActive, trace('Is Active'), canPostBlog, trace('message'));
 
-userPostBlog(3).then(log)
+userPostBlog(22).then(log)
