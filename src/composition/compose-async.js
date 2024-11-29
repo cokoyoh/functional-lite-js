@@ -22,7 +22,7 @@ const canPostBlog = (isActive) => {
   return Promise.resolve({ message: 'User cannot post a blog' })
 }
 
-const log = (message) => console.log(message)
+const log = (...message) => console.log(...message)
 
 
 /**
