@@ -1,4 +1,4 @@
-const { asyncPipe } = require("../functional-utils")
+const { asyncPipe, trace } = require("../functional-utils")
 
 const getUserById = (id) => {
   if (id === 2) {
@@ -14,7 +14,7 @@ const isActive = (user) => {
   return user.role === 'bar'
 }
 
-const postBlog = (isActive) => {
+const canPostBlog = (isActive) => {
   if (isActive) {
     return Promise.resolve({ message: 'User can post a blog'})
   }
@@ -33,6 +33,6 @@ const log = (message) => console.log(message)
  * Allow the user to post their id
  */
 
-const activeUserPostBlog = asyncPipe(getUserById, isActive, postBlog);
+const userPostBlog = asyncPipe(getUserById, trace('User'), isActive, trace('Is Active'), canPostBlog, trace('Message Received'));
 
-activeUserPostBlog(3).then(log)
+userPostBlog(3).then(log)
