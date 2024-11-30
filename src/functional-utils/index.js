@@ -3,8 +3,8 @@ const guard = (fn) => (arg) => {
 };
 
 const compose = (...fns) => {
-  return [...fns].reverse().reduce((f1, f2) => {
-    return (...args) => f2(f1(...args));
+  return [...fns].reverse().reduce((g, f) => {
+    return (...args) => f(g(...args));
   });
 };
 
