@@ -40,3 +40,6 @@ car.drive();
 
 const bike = MotorFactory.create('Bike', 'Yamaha');
 bike.ride()
+
+const ufo = MotorFactory.create('Unknown', 'Extra terrestrial')
+ufo.ride()
