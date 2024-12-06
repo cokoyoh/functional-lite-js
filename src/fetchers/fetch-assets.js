@@ -28,7 +28,7 @@ const fetchAssets = async ({ ctx, ids, type }) => {
 
   return Promise.all(ids.map(toAssetFetcherById))
     .then(reduceToKeyValuePairs)
-    .catch(console.log)
+    .catch(log)
 }
 
 module.exports = { fetchAssets }
