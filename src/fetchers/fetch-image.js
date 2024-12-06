@@ -1,5 +1,5 @@
-const fetchImageById = ({ ctx, id }) => {
-  cconsole.log({ ctx });
+const fetchImageById = async ({ ctx, id }) => {
+  console.log({ ctx });
 
   return {
     id,

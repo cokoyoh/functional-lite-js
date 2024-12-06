@@ -16,12 +16,12 @@ const fetchAsset = async ({ ctx, id, type = 'image' }) => {
   }
 
   return fetcher({ ctx, id, type })
-    .then(response => ({ id: response }))
+    .then(response => ({ [id]: response }))
     .catch(log)
 }
 
 
-const fetchAssets = ({ ctx, ids }) => {
+const fetchAssets = async ({ ctx, ids }) => {
   const requests = ids.map(id => fetchAsset({ ctx, id }));
 
   return Promise.all(requests)
