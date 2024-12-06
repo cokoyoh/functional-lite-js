@@ -22,9 +22,9 @@ const fetchAsset = async ({ ctx, id, type = 'image' }) => {
 
 
 const fetchAssets = async ({ ctx, ids }) => {
-  const requests = ids.map(id => fetchAsset({ ctx, id }));
+  const toAssetFetcherById = (id) => fetchAsset({ ctx, id });
 
-  return Promise.all(requests)
+  return Promise.all(ids.map(toAssetFetcherById))
 }
 
 module.exports = { fetchAssets }
