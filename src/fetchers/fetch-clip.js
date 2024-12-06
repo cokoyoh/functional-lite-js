@@ -1,8 +1,9 @@
-const fetchClipById = ({ ctx, id }) => {
-  cconsole.log({ ctx });
+const fetchClipById = async ({ ctx, id }) => {
+  console.log({ ctx });
 
   return {
     id,
+    type: 'clip',
     name: 'foo',
   }
 }

@@ -21,10 +21,14 @@ const fetchAsset = async ({ ctx, id, type = 'image' }) => {
 }
 
 
-const fetchAssets = async ({ ctx, ids }) => {
-  const toAssetFetcherById = (id) => fetchAsset({ ctx, id });
+const fetchAssets = async ({ ctx, ids, type }) => {
+  const toAssetFetcherById = (id) => fetchAsset({ ctx, id, type });
+
+  const reduceToKeyValuePairs = (response) => response.reduce((acc, b) => ({ ...acc, ...b }));
 
   return Promise.all(ids.map(toAssetFetcherById))
+    .then(reduceToKeyValuePairs)
+    .catch(console.log)
 }
 
 module.exports = { fetchAssets }

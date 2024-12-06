@@ -3,6 +3,7 @@ const fetchImageById = async ({ ctx, id }) => {
 
   return {
     id,
+    type: 'image',
     name: 'foo',
   };
 };
